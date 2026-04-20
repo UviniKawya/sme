@@ -37,16 +37,6 @@ const assessmentCategories: { id: AssessmentSubPage; title: string; sectionId: s
     ),
   },
   {
-    id: "strategic",
-    title: "Strategic Planning",
-    sectionId: "strategic",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-      </svg>
-    ),
-  },
-  {
     id: "cybersecurity",
     title: "Cybersecurity Preparedness",
     sectionId: "cybersecurity",
@@ -118,7 +108,7 @@ export default function Assessment() {
             <div>
               <h3 className="text-lg font-semibold text-gray-900">Digital Readiness Assessment</h3>
               <p className="text-sm text-gray-500 mt-0.5">
-                Answer all questions across 5 categories to determine your digital readiness level.
+                Answer all questions across 4 categories to determine your digital readiness level.
               </p>
             </div>
             <div className="text-right">
@@ -147,38 +137,46 @@ export default function Assessment() {
             const isExpanded = expandedSection === cat.id;
 
             return (
-              <div key={cat.id} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+              <div key={cat.id} className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
                 <button
                   onClick={() => handleCategoryClick(cat.id)}
-                  className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors"
+                  className={`w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors ${
+                    isExpanded ? "bg-[#1e3a8a]" : ""
+                  }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                      isComplete ? "bg-emerald-100 text-emerald-600" : "bg-brand-100 text-brand-600"
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                      isComplete 
+                        ? "bg-emerald-100 text-emerald-600" 
+                        : isExpanded 
+                          ? "bg-white/20 text-white" 
+                          : "bg-brand-100 text-brand-600"
                     }`}>
                       {isComplete ? (
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       ) : (
-                        cat.icon
+                        <span className={`text-xs font-bold ${isExpanded ? "text-white" : "text-brand-600"}`}>
+                          {assessmentCategories.indexOf(cat) + 1}
+                        </span>
                       )}
                     </div>
                     <div className="text-left">
-                      <h4 className="text-sm font-semibold text-gray-900">{cat.title}</h4>
-                      <p className="text-xs text-gray-500">
+                      <h4 className={`text-sm font-medium ${isExpanded ? "text-white" : "text-gray-900"}`}>{cat.title}</h4>
+                      <p className={`text-xs ${isExpanded ? "text-blue-200" : "text-gray-500"}`}>
                         {completion.answered}/{completion.total} answered
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     {isComplete && (
                       <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-                        Complete
+                        Done
                       </span>
                     )}
                     <svg
-                      className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                      className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-180 text-white" : "text-gray-400"}`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

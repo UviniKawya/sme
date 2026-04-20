@@ -2,7 +2,7 @@
 
 import { useAppContext } from "@/lib/store";
 
-function CircularProgress({ value, size = 100, strokeWidth = 8, color = "#2563eb" }: { value: number; size?: number; strokeWidth?: number; color?: string }) {
+function CircularProgress({ value, size = 100, strokeWidth = 8, color = "#3b82f6" }: { value: number; size?: number; strokeWidth?: number; color?: string }) {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (value / 100) * circumference;
@@ -10,7 +10,7 @@ function CircularProgress({ value, size = 100, strokeWidth = 8, color = "#2563eb
   return (
     <div className="circular-progress" style={{ width: size, height: size }}>
       <svg width={size} height={size}>
-        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#e2e8f0" strokeWidth={strokeWidth} />
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth={strokeWidth} />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -23,7 +23,7 @@ function CircularProgress({ value, size = 100, strokeWidth = 8, color = "#2563eb
           strokeLinecap="round"
         />
       </svg>
-      <span className="progress-text text-xl">{value}%</span>
+      <span className="progress-text text-xl text-white">{value}%</span>
     </div>
   );
 }
@@ -51,10 +51,10 @@ function getOverallScore(sections: ReturnType<typeof useAppContext>["assessmentS
 }
 
 function getLevel(score: number) {
-  if (score >= 70) return { label: "High Readiness", color: "text-emerald-700", bg: "bg-emerald-50 border-emerald-200", barColor: "#10b981" };
-  if (score >= 40) return { label: "Moderate", color: "text-amber-700", bg: "bg-amber-50 border-amber-200", barColor: "#f59e0b" };
-  if (score > 0) return { label: "Low Readiness", color: "text-red-700", bg: "bg-red-50 border-red-200", barColor: "#ef4444" };
-  return { label: "Not Started", color: "text-gray-500", bg: "bg-gray-50 border-gray-200", barColor: "#94a3b8" };
+  if (score >= 70) return { label: "High Readiness", color: "text-emerald-300", bg: "bg-emerald-500/30 border-emerald-400/50", barColor: "#34d399" };
+  if (score >= 40) return { label: "Moderate", color: "text-amber-300", bg: "bg-amber-500/30 border-amber-400/50", barColor: "#fbbf24" };
+  if (score > 0) return { label: "Low Readiness", color: "text-red-300", bg: "bg-red-500/30 border-red-400/50", barColor: "#f87171" };
+  return { label: "Not Started", color: "text-gray-400", bg: "bg-gray-500/30 border-gray-400/50", barColor: "#9ca3af" };
 }
 
 const sectionLabels: Record<string, string> = {
@@ -78,34 +78,34 @@ export default function AssessmentSummary() {
   const completionPct = totalQuestions > 0 ? Math.round((answeredQuestions / totalQuestions) * 100) : 0;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4 bg-[#1e3a8a] rounded-xl p-4">
       {/* Overall Score */}
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 text-center">
-        <h4 className="text-sm font-semibold text-gray-900 mb-3">Overall Readiness</h4>
-        <CircularProgress value={overall} size={110} strokeWidth={9} color={level.barColor} />
+      <div className="bg-white/10 rounded-xl border border-white/20 shadow-sm p-4 text-center">
+        <h4 className="text-sm font-semibold text-white mb-3">Overall Readiness</h4>
+        <CircularProgress value={overall} size={100} strokeWidth={8} color={level.barColor} />
         <div className={`mt-3 inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${level.bg} ${level.color}`}>
           {level.label}
         </div>
-        <p className="text-xs text-gray-500 mt-2">
+        <p className="text-xs text-gray-300 mt-2">
           {answeredQuestions} of {totalQuestions} questions answered
         </p>
       </div>
 
       {/* Completion */}
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
-        <h4 className="text-sm font-semibold text-gray-900 mb-3">Completion</h4>
-        <div className="w-full bg-gray-200 rounded-full h-2.5">
+      <div className="bg-white/10 rounded-xl border border-white/20 shadow-sm p-4">
+        <h4 className="text-sm font-semibold text-white mb-3">Completion</h4>
+        <div className="w-full bg-white/20 rounded-full h-2.5">
           <div
-            className="bg-brand-600 h-2.5 rounded-full transition-all duration-500"
+            className="bg-blue-400 h-2.5 rounded-full transition-all duration-500"
             style={{ width: `${completionPct}%` }}
           />
         </div>
-        <p className="text-xs text-gray-500 mt-2">{completionPct}% complete</p>
+        <p className="text-xs text-gray-300 mt-2">{completionPct}% complete</p>
       </div>
 
       {/* Section Scores */}
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
-        <h4 className="text-sm font-semibold text-gray-900 mb-3">Category Scores</h4>
+      <div className="bg-white/10 rounded-xl border border-white/20 shadow-sm p-4">
+        <h4 className="text-sm font-semibold text-white mb-3">Category Scores</h4>
         <div className="space-y-3">
           {assessmentSections.map((section) => {
             const score = getSectionScore(section);
@@ -115,14 +115,14 @@ export default function AssessmentSummary() {
             return (
               <div key={section.id}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-medium text-gray-700">
+                  <span className="text-xs font-medium text-gray-200">
                     {sectionLabels[section.id] ?? section.title}
                   </span>
-                  <span className="text-xs font-semibold text-gray-900">
+                  <span className="text-xs font-semibold text-white">
                     {score !== null ? `${score}%` : "—"}
                   </span>
                 </div>
-                <div className="w-full bg-gray-100 rounded-full h-1.5">
+                <div className="w-full bg-white/20 rounded-full h-1.5">
                   <div
                     className="h-1.5 rounded-full transition-all duration-500"
                     style={{

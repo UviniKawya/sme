@@ -63,16 +63,16 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 bg-white border-r border-gray-200 flex flex-col h-screen fixed left-0 top-0 z-30">
-      <div className="p-5 border-b border-gray-200">
+      <div className="p-4 bg-[#1e3a8a]">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-brand-600 flex items-center justify-center">
-            <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center">
+            <svg className="w-6 h-6 text-[#1e3a8a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
             </svg>
           </div>
           <div>
-            <h1 className="text-sm font-bold text-gray-900 leading-tight">SME Digital</h1>
-            <p className="text-xs text-gray-500">Readiness Platform</p>
+            <h1 className="text-sm font-bold text-white leading-tight">SME Digital</h1>
+            <p className="text-xs text-blue-200">Readiness Platform</p>
           </div>
         </div>
       </div>

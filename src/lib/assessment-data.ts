@@ -113,43 +113,6 @@ export const defaultAssessmentSections: AssessmentSection[] = [
     ],
   },
   {
-    id: "strategic",
-    title: "Strategic Planning",
-    icon: "target",
-    questions: [
-      {
-        id: "strat-1",
-        text: "Does your business have a documented digital strategy or roadmap?",
-        tooltip: "A written plan outlining digital goals, timelines, and investment priorities.",
-        answer: null,
-      },
-      {
-        id: "strat-2",
-        text: "Do you use data analytics to inform business decisions?",
-        tooltip: "Using data from sales, customers, or operations to guide strategy and operations.",
-        answer: null,
-      },
-      {
-        id: "strat-3",
-        text: "Does your business have an online presence (website, social media profiles)?",
-        tooltip: "Active website and/or social media channels for customer engagement and brand visibility.",
-        answer: null,
-      },
-      {
-        id: "strat-4",
-        text: "Have you identified key digital transformation goals for the next 12 months?",
-        tooltip: "Clear objectives for adopting or improving digital capabilities in the near term.",
-        answer: null,
-      },
-      {
-        id: "strat-5",
-        text: "Do you benchmark your digital maturity against industry peers or standards?",
-        tooltip: "Comparing your digital capabilities with competitors or recognized frameworks.",
-        answer: null,
-      },
-    ],
-  },
-  {
     id: "cybersecurity",
     title: "Cybersecurity Preparedness",
     icon: "shield",
