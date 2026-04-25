@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>About - SME Digital Readiness</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="max-w-3xl mx-auto">
+        <div class="bg-white rounded-xl border border-gray-200 p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">About This Platform</h2>
+
+            <div class="prose prose-gray max-w-none">
+                <p class="text-gray-600 mb-6">
+                    The SME Digital Readiness Assessment Platform helps small and medium enterprises evaluate their digital maturity
+                    across five key dimensions: Infrastructure, Finance, Skills, Cybersecurity, and Strategy.
+                </p>
+
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Features</h3>
+                <ul class="list-disc pl-6 space-y-2 text-gray-600 mb-6">
+                    <li>Comprehensive 25-question assessment with Likert-scale scoring</li>
+                    <li>Real-time progress tracking and scoring</li>
+                    <li>Inventory management with low-stock alerts</li>
+                    <li>Sales tracking with payment status monitoring</li>
+                    <li>Interactive dashboard with visualizations</li>
+                    <li>SME registration and profile management</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Technology</h3>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="badge badge-neutral">Spring Boot 3</span>
+                    <span class="badge badge-neutral">Java 17</span>
+                    <span class="badge badge-neutral">Thymeleaf</span>
+                    <span class="badge badge-neutral">H2 Database</span>
+                    <span class="badge badge-neutral">JPA/Hibernate</span>
+                    <span class="badge badge-neutral">HTML/CSS/JavaScript</span>
+                </div>
+
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">License</h3>
+                <p class="text-gray-600">
+                    This is an open-source project created for educational and business purposes.
+                    Feel free to modify and extend it for your needs.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
